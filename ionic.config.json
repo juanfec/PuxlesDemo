@@ -1,0 +1,7 @@
+{
+  "name": "PuxlesDemo",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
