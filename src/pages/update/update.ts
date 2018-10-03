@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, Platform } from 'ionic-angular';
 
 @Component({
-  selector: 'page-tasks-create',
-  templateUrl: 'tasks-create.html'
+  selector: 'page-update',
+  templateUrl: 'update.html'
 })
-export class TasksCreatePage {
+export class Update {
 
   isReadyToSave: boolean;
 
@@ -19,7 +19,13 @@ export class TasksCreatePage {
               public platform: Platform) {
     this.isAndroid = platform.is('android');
     this.item = {
-      'taskId': navParams.get('id')
+      'taskId': navParams.get('id'),
+      'userId': navParams.get('userid'),
+        'category': navParams.get('category'),
+        'description': navParams.get('description'),
+        'correo': navParams.get('correo'),
+        'direccion': navParams.get('direccion'),
+        'created': navParams.get('created')
     };
     this.isReadyToSave = true;
   }

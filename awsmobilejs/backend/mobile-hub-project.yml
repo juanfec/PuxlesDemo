@@ -13,8 +13,10 @@ features:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
               category: S
+              correo: S
               created: N
               description: S
+              direccion: S
               taskId: S
               userId: S
             hashKeyName: userId
@@ -29,7 +31,7 @@ features:
             rangeKeyName: taskId
             rangeKeyType: S
             tableName: ___DYNAMIC_PREFIX___-tasks
-            tablePrivacy: public
+            tablePrivacy: private
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:
       analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}

@@ -4,6 +4,7 @@ import { NavController, ModalController } from 'ionic-angular';
 import { Auth, Logger } from 'aws-amplify';
 
 import { TasksCreatePage } from '../tasks-create/tasks-create';
+import { Update } from  '../update/update';
 const aws_exports = require('../../aws-exports').default;
 
 import { DynamoDB } from '../../providers/providers';
@@ -80,6 +81,48 @@ export class TasksPage {
       };
       this.db.getDocumentClient()
         .then(client => client.put(params).promise())
+        .then(data => this.refreshTasks())
+        .catch(err => logger.debug('add task error', err));
+    })
+    addModal.present();
+  }
+
+  update(task,index){
+    let id = this.generateId();
+    let useridd = this.userId;
+    let category = task.category;
+    let description = task.description;
+    let correo = task.correo;
+    let created = task.created;
+    let direccion = task.direccion;
+    let addModal = this.modalCtrl.create(Update, { 'id': id,
+                                                  'userid': useridd,
+                                                  'category': category,
+                                                  'description': description,
+                                                  'correo': correo,
+                                                  'direccion': direccion,
+                                                  'created': created
+                                                   });
+    addModal.onDidDismiss(item => {
+      if (!item) { return; }
+      console.log(item);
+      const params = {
+        'TableName': this.taskTable,
+        'Key': {
+          'userId': this.userId,
+          'taskId': task.taskId
+          },
+          'UpdateExpression': "set category=:c, direccion=:dir, correo=:co, created=:cr, description=:d",
+          'ExpressionAttributeValues':{
+              ":c":item.category,
+              ":dir": item.direccion ,
+              ":co": item.correo,
+              ":cr":item.created,
+              ":d":item.description
+          }
+      };
+      this.db.getDocumentClient()
+        .then(client => client.update(params).promise())
         .then(data => this.refreshTasks())
         .catch(err => logger.debug('add task error', err));
     })
