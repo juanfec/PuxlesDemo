@@ -1,0 +1,45 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Actualizar contacto</ion-title>
+      <ion-buttons end>
+        <button ion-button [attr.icon-only]="!isAndroid ? null : ''" (click)="cancel()">
+          <span color="primary" showWhen="ios">
+            Cancelar
+          </span>
+          <ion-icon name="md-close" showWhen="core,android,windows"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <ion-input [(ngModel)]="item.category" name="category">{{item.category}}</ion-input>
+      </ion-item>
+  
+      <ion-item >
+        <ion-label>Telefono</ion-label>
+        <ion-input [(ngModel)]="item.description" name="description">{{item.description}}</ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Direccion</ion-label>
+        <ion-input [(ngModel)]="item.direccion" name="direccion" type="text">{{item.direccion}}</ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Correo</ion-label>
+        <ion-input [(ngModel)]="item.correo" name="correo" type="email">{{item.correo}}</ion-input>
+      </ion-item>
+  
+      <div padding>
+        <button block icon-start ion-button color="primary" (click)="done()"><ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>Actualizar Contacto</button>
+      </div>
+    </ion-list>
+  </ion-content>
+  

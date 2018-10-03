@@ -15,6 +15,7 @@ import { AccountPage } from '../pages/account/account';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TasksPage } from '../pages/tasks/tasks';
 import { TasksCreatePage } from '../pages/tasks-create/tasks-create';
+import { Update } from  '../pages/update/update';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,7 +39,8 @@ Amplify.configure(aws_exports);
     AccountPage,
     TabsPage,
     TasksPage,
-    TasksCreatePage
+    TasksCreatePage,
+    Update
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ Amplify.configure(aws_exports);
     AccountPage,
     TabsPage,
     TasksPage,
-    TasksCreatePage
+    TasksCreatePage,
+    Update
   ],
   providers: [
     StatusBar,

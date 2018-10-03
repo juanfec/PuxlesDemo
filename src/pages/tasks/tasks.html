@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Tasks 
+      Contactos 
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="addTask()">
@@ -23,13 +23,15 @@
 
     <ion-list>
       <ion-item-sliding *ngFor="let item of items; let idx = index;">
-        <button ion-item>
+        <button ion-item (click)="update(item, idx)">
           <h2>{{item.category}}</h2>
           <p>{{item.description}}</p>
+          <p>{{item.direccion}}</p>
+          <p>{{item.correo}}</p>
         </button>
 
         <ion-item-options>
-          <button ion-button color="danger" (click)="deleteTask(item, idx)">DELETE</button>
+          <button ion-button color="danger" (click)="deleteTask(item, idx)">Borrar</button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
